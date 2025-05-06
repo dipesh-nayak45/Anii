@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Ani 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      font-family: 'Quicksand', sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      border-right: .15em solid pink;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(30, end) forwards, blink .75s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: pink; }
+    }
+
+    .photo-frame {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 5px solid #ff69b4;
+      box-shadow: 0 0 30px #ff69b4aa;
+      margin: 2rem 0;
+      animation: pulse 4s infinite ease-in-out;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        box-shadow: 0 0 30px #ff69b4aa;
+      }
+      50% {
+        box-shadow: 0 0 50px #ff69b4;
+      }
+    }
+
+    .reveal-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      border-radius: 15px;
+      cursor: pointer;
+      width: 280px;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    .reveal-box:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .reveal-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+    }
+
+    .reveal-box.active .reveal-content {
+      max-height: 500px;
+      margin-top: 1rem;
+    }
+
+    .reveal-text {
+      color: #ffccf9;
+      font-size: 1.1rem;
+    }
+
+    .floating-hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4d6d;
+      transform: rotate(45deg);
+      animation: floatHeart 10s infinite ease-in;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #ff4d6d;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { top: 0; left: -10px; }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(0) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="floating-hearts"></div>
+
+  <h1>Happy Birthday Ani 💖</h1>
+
+  <div class="photo-frame">
+    <img src="ani.png" alt="Ani's Photo" />
+  </div>
+
+  <div class="reveal-box" onclick="redirectToMessagePage()">
+    Click to Reveal a Message
+    <div class="reveal-content">
+      <p class="reveal-text">
+        From the moment we met, you've lit up my world. On your birthday, I just want to say — you're my forever sunshine, my softest heart, my everything. 💗
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Generate floating hearts
+  const heartContainer = document.querySelector('.floating-hearts');
+  for (let i = 0; i < 30; i++) {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.style.left = `${Math.random() * 100}vw`;
+    heart.style.top = `${Math.random() * 100}vh`;
+    heart.style.animationDuration = `${4 + Math.random() * 6}s`;
+    heart.style.opacity = Math.random();
+    heartContainer.appendChild(heart);
+  }
+
+  // Redirect to another page with a romantic love effect
+  function redirectToMessagePage() {
+    setTimeout(function() {
+      window.location.href = "message.html";  // Change this to your target URL
+    }, 500);
+  }
+</script>
+
+</body>
+</html>
